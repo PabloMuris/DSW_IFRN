@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from .forms import CategoriaForms,ProdutoForms,FornecedorForms
 # Create your views here.
 
 from django.shortcuts import render, get_object_or_404
@@ -20,3 +20,37 @@ def listar_produtos(request):
 def detalhes_produto(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     return render(request, 'detalhes_produto.html', {'produto': produto})
+
+def formulario_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForms(request.POST)
+        if form.is_valid():
+            form.save()  
+            return redirect('pagina_sucesso') 
+    else:
+        form = ProdutoForms()
+
+    return render(request, 'cadastrar_produto.html', {'form': form})
+
+def formulario_categoria(request):
+    if request.method == 'POST':
+        form = CategoriaForms(request.POST)
+        if form.is_valid():
+            form.save()  
+            return redirect('pagina_sucesso') 
+    else:
+        form = CategoriaForms()
+
+    return render(request, 'cadastrar_categoria.html', {'form': form})
+
+def formulario_Fornecedor(request):
+    if request.method == 'POST':
+        form = FornecedorForms(request.POST)
+        if form.is_valid():
+            form.save()  
+            return redirect('pagina_sucesso') 
+    else:
+        form = FornecedorForms()
+
+    return render(request, 'cadastrar_fornecedor.html', {'form': form})
+

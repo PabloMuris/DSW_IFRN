@@ -1,6 +1,24 @@
 from django import forms
+from .models import Categoria,Produto,Fornecedor
 
-class ContatoForm(forms.Form):
-    nome = forms.CharField(max_length=100, label="Nome")
-    email = forms.EmailField(label="E-mail")
-    mensagem = forms.CharField(widget=forms.Textarea, label="Mensagem")
+class FornecedorForms(forms.Form):
+    
+    class Meta:
+        model = Fornecedor
+        fields = '__all__'
+
+class ProdutoForms(forms.Form):
+    
+    class Meta:
+        model = Produto
+        fields = '__all__'
+
+class CategoriaForms(forms.Form):
+    
+    class Meta:
+        model = Categoria
+        fields = '__all__'
+
+
+    
+

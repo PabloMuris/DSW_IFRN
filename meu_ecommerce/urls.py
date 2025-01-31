@@ -24,4 +24,8 @@ urlpatterns = [
     path('categorias/', views.listar_categorias, name='listar_categorias'),
     path('produtos/', views.listar_produtos, name='listar_produtos'),
     path('produtos/<int:produto_id>/', views.detalhes_produto, name='detalhes_produto'),
+    path('fornecedores/', views.listar_fornecedores, name='listar_fornecedores'),
+    path('cadastro_categoria/', views.formulario_categoria, name='cadastrar_categorias'),
+    path('cadastro_fornecedor/', views.formulario_Fornecedor, name='cadastrar_fornecedor'),
+    path('cadastro_produto/', views.formulario_produto, name='cadastrar_produto'),
 ]
